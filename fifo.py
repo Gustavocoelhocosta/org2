@@ -3,18 +3,17 @@ import random as re
 
 def aleatorio(seq, linhas):
     cash = [None] * linhas
-    indicador = 0
     hit = 0
     miss = 0
     sub = 0
     for bloco in seq:
-        sub
         if bloco in cash:
             hit += 1
         else:
-            if cash[(re.randrange(linhas))]:
+            linha = re.randrange(linhas)
+            if cash[linha]:
                 sub += 1
-            cash[(re.randrange(linhas))] = bloco
+            cash[linha] = bloco
             miss += 1
     print('ALEATORIO')
     print('cash ' + str(cash))
@@ -48,6 +47,7 @@ def fifo(seq, linhas):
     print('-----------------------')
 
 def lru(seq, linhas):
+    print('LRU')
     cash = [None] * linhas
     tempo = [0] * linhas
     hit = 0
@@ -69,8 +69,6 @@ def lru(seq, linhas):
             for i in range(linhas):
                 tempo[i] += 1
             tempo[linha] = 0
-
-    print('LRU')
     print('cash ' + str(cash))
     print('hit = %d' % hit)
     print('miss = %d' % miss)
@@ -104,6 +102,7 @@ def lfu(seq, linhas):
 
 
 def algoritimo_substituicao(seq, linhas):
+    print('-----------------------')
     seq = seq.split(', ')
     if linhas >=2 and linhas <= 256:
         aleatorio(seq, linhas)
@@ -114,9 +113,11 @@ def algoritimo_substituicao(seq, linhas):
         print('numero de linhas da cach incorreta')
 
 
-seq = '3890, 3751, 0, 3751, 3751, 35, 64, 133, 0, 1, 2, 3, 4, 5, 6, 6, 4, 1000, 1001, 1002, 1003, 1004, 1004, 1005, 1006, 1007, 0, 6, 6, 4, 1000, 1001, 1002, 1003, 1004, 1004, 1005, 1006, 1007, 3890, 3751, 0, 6, 6, 4, 1000, 1001, 1002, 1003, 1004, 1004, 1005, 1006, 1007'
-linhas = 4
+# seq = '3890, 3751, 0, 3751, 3751, 35, 64, 133, 0, 1, 2, 3, 4, 5, 6, 6, 4, 1000, 1001, 1002, 1003, 1004, 1004, 1005, 1006, 1007, 0, 6, 6, 4, 1000, 1001, 1002, 1003, 1004, 1004, 1005, 1006, 1007, 3890, 3751, 0, 6, 6, 4, 1000, 1001, 1002, 1003, 1004, 1004, 1005, 1006, 1007'
+# linhas = 20
 
+seq = input('entre com a sequência ')
+linhas = int(input('entre com o número de linhas da cash '))
 algoritimo_substituicao(seq, linhas)
 
 
