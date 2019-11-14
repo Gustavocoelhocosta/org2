@@ -1,6 +1,28 @@
-# seq = [2, 4, 5, 13, 8, 5, 4, 1, 13, 5, 8, 4, 2, 5, 4, 1]
-seq = [1, 3, 4, 7, 6, 4, 3, 6, 8, 3, 4, 1, 8, 3, 4, 9, 8]
+import random as re
+
+
+```
+seq = 1, 3, 4, 7, 6, 4, 3, 6, 8, 3, 4, 1, 8, 3, 4, 9, 8`
 linhas = 4
+
+
+def aleatorio(seq, linhas):
+    cash = [None] * linhas
+    indicador = 0
+    hit = 0
+    miss = 0
+    for bloco in seq:
+        if bloco in cash:
+            hit += 1
+        else:
+            cash[(re.randrange(linhas))] = bloco
+            miss += 1
+    print('aleatorio')
+    print('cash ' + str(cash))
+    print('hit = %d' % hit)
+    print('miss = %d' % miss)
+    print('-----------------------')
+
 
 
 def fifo(seq, linhas):
@@ -68,6 +90,13 @@ def lfu(seq, linhas):
     print('-----------------------')
 
 
-fifo(seq, linhas)
-lru(seq, linhas)
-lfu(seq, linhas)
+def algoritimo_substituicao(seq, linhas):
+    aleatorio(seq, linhas)
+    fifo(seq, linhas)
+    lru(seq, linhas)
+    lfu(seq, linhas)
+
+
+algoritimo_substituicao(seq, linhas)
+
+
