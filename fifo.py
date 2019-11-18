@@ -56,8 +56,8 @@ def lru(seq, linhas):
     for bloco in seq:
         if bloco in cash:
             hit += 1
-            for i in range(linhas):
-                tempo[i] += 1
+            for t in tempo:
+                t += 1
             linha = cash.index(bloco)
             tempo[linha] = 0
         else:
@@ -66,8 +66,8 @@ def lru(seq, linhas):
             if cash[linha]:
                 sub += 1
             cash[linha] = bloco
-            for i in range(linhas):
-                tempo[i] += 1
+            for t in tempo:
+                t += 1
             tempo[linha] = 0
     print('cash ' + str(cash))
     print('hit = %d' % hit)
@@ -103,7 +103,7 @@ def lfu(seq, linhas):
 
 def algoritimo_substituicao(seq, linhas):
     print('-----------------------')
-    seq = seq.split(', ')
+    seq = list(map(int, seq.split(", ")))
     if linhas >=2 and linhas <= 256:
         aleatorio(seq, linhas)
         fifo(seq, linhas)
@@ -113,11 +113,16 @@ def algoritimo_substituicao(seq, linhas):
         print('numero de linhas da cach incorreta')
 
 
-# seq = '3890, 3751, 0, 3751, 3751, 35, 64, 133, 0, 1, 2, 3, 4, 5, 6, 6, 4, 1000, 1001, 1002, 1003, 1004, 1004, 1005, 1006, 1007, 0, 6, 6, 4, 1000, 1001, 1002, 1003, 1004, 1004, 1005, 1006, 1007, 3890, 3751, 0, 6, 6, 4, 1000, 1001, 1002, 1003, 1004, 1004, 1005, 1006, 1007'
-# linhas = 20
 
-seq = input('entre com a sequência ')
-linhas = int(input('entre com o número de linhas da cash '))
+# seq = open('acesso2.txt', 'r').readline()[0:-1]
+
+seq = open(input('entre com o nome do arquivo '), 'r').readline()[0:-1]
+linhas = int(input('entre com o numero de linhas da cach '))
+
+
 algoritimo_substituicao(seq, linhas)
+
+
+
 
 
