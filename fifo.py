@@ -56,8 +56,7 @@ def lru(seq, linhas):
     for bloco in seq:
         if bloco in cash:
             hit += 1
-            for t in tempo:
-                t += 1
+            tempo = list(map(lambda x: x + 1, tempo))
             linha = cash.index(bloco)
             tempo[linha] = 0
         else:
@@ -66,9 +65,9 @@ def lru(seq, linhas):
             if cash[linha]:
                 sub += 1
             cash[linha] = bloco
-            for t in tempo:
-                t += 1
+            tempo = list(map(lambda x: x + 1, tempo))
             tempo[linha] = 0
+
     print('cash ' + str(cash))
     print('hit = %d' % hit)
     print('miss = %d' % miss)
@@ -121,7 +120,7 @@ linhas = int(input('entre com o numero de linhas da cach '))
 
 
 algoritimo_substituicao(seq, linhas)
-
+seq = open(input('ENTER para sair '), 'r').readline()[0:-1]
 
 
 
